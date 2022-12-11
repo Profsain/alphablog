@@ -11,6 +11,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div>
+      <nav>
+        <ul>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Articles", articles_path %></li>
+          <li><%= link_to "New Article", new_article_path %></li>
+        </ul>
+      </nav>
+      
+      <% flash.each do |type, msg| %>
+        <div>
+          <%= msg %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>
