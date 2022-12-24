@@ -1,6 +1,10 @@
-<div>
-  <h1>Edit Article</div>
- 
+<div class="container">
+  <h1 class="display-5 fw-bold lh-1 mb-3">Edit Article</div>
   <hr>
+  
   <%= render 'form'%>
+
+  <div class="container">
+    <%= link_to 'Cancel', articles_path, :class => "btn btn-outline-dark"%>
+  </div>
 </div>

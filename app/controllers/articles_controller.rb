@@ -2,7 +2,14 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   # Get all articles
   def index
-    @articles = Article.all
+    if params[:search].present?
+      @parameter = params[:search].downcase
+      @articles = Article.where("lower(title) LIKE :search", search: "%#{@parameter}%").order("created_at DESC")
+    else
+      @articles = Article.all.order('created_at DESC')
+    end
+
+    @articles = Article.all.order('created_at DESC')
   end
 
   def show

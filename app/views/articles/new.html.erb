@@ -1,7 +1,10 @@
-<div>
-  <h1>Create New Article</h1>
+<div class="container">
+  <h1 class="display-5 fw-bold lh-1 mb-3">Create New Article</h1>
 
   <hr>
   <%= render 'form' %>
-  <%= link_to 'Back to Articles', articles_path %>
+  
+  <div class="container">
+    <%= link_to 'Back to Articles', articles_path, :class => "btn btn-outline-dark" %>
+  </div>
 </div>
