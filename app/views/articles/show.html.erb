@@ -1,6 +1,10 @@
 <div class="container">
   <div class="h-100 p-5">
-    <h1 class="display-5 fw-bold lh-1 mb-3"><%= @article.title %></h1>
+    <div>
+      <h1 class="display-5 fw-bold lh-1 mb-3"><%= @article.title %></h1>
+      <p class="fw-lighter fst-italic">....by: <%= @article.user.username if @article.user %> </p>
+      <hr>
+    </div>
     <p><%= @article.description %></p>
     <%= link_to 'Bact to articles', articles_path, :class => "btn btn-outline-dark", :type => "button" %>
   </div>
