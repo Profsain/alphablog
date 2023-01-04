@@ -2,7 +2,12 @@
   <div class="h-100 p-5">
     <div>
       <h1 class="display-5 fw-bold lh-1 mb-3"><%= @article.title %></h1>
-      <p class="fw-lighter fst-italic">....by: <%= @article.user.username if @article.user %> </p>
+      <p class="fst-italic text-primary">
+        ....by:
+        <% if @article.user %>
+          <%= link_to @article.user.username, user_path(@article.user), class: "text-decoration-none" %>
+        <% end %>
+      </p>
       <hr>
     </div>
     <p><%= @article.description %></p>

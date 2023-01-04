@@ -1,0 +1,27 @@
+<div class="container mt-4 px-6">
+  <h1 class="display-5 fw-bold lh-1 mb-3">Alpha Bloggers</div>
+  <hr>
+  <div class="container px-6">
+    <% @users.each do |user| %>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <%= gravatar_for user, size: 180 %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= user.username.titlecase%></h5>
+              <p class="card-text"><%= pluralize(user.articles.count, "article") %></p>
+              <p class="card-text"><small class="text-muted">Blogger since: <%= time_ago_in_words(user.created_at) %></small></p>
+              <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-primary" %>
+              <%= link_to "View Profile", user, class: "btn btn-success" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="container">
+    <%= link_to 'Cancel', articles_path, :class => "btn btn-outline-dark"%>
+  </div>
+</>
