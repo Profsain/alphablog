@@ -1,7 +1,13 @@
-<div class="container mt-4 px-6">
+<div class="container-fluid mt-4 px-6">
   <h1 class="display-5 fw-bold lh-1 mb-3">Alpha Bloggers</div>
   <hr>
-  <div class="container px-6">
+
+  <%# pagenation %>
+  <div class="flickr_pagination mb-4">
+    <%= will_paginate @users, :container => false %>
+  </div>
+
+  <div class="container mb-4">
     <% @users.each do |user| %>
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
@@ -20,8 +26,12 @@
         </div>
       </div>
     <% end %>
-  </div>
-  <div class="container">
-    <%= link_to 'Cancel', articles_path, :class => "btn btn-outline-dark"%>
+    <div class="container">
+      <%= link_to 'Cancel', articles_path, :class => "btn btn-outline-dark"%>
+    </div>
+
+    <div class="flickr_pagination pb-4">
+      <%= will_paginate @users, :container => false %>
+    </div>
   </div>
 </>
