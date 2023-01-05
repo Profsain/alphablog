@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
-
+  before_action :set_user, only: [:edit, :update, :show]
   # get all users
   def index
     @users = User.paginate(page: params[:page], per_page: 2)
   end
 
   def new
-    @user = get_user
+    @user = User.new
   end
 
   def create
-    @user = get_user
+    @user = User.new(user_params)
+    
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Welcome to Alpha blog #{@user.username}! You have successfully signed up"
@@ -18,27 +19,24 @@ class UsersController < ApplicationController
       redirect_to articles_path
     else
       render 'new'
-      flash[:alert] = "There was a problem with your signup information"
+      flash.now[:alert] = "There was a problem with your signup information"
     end
   end
 
-  def edit
-    @user = get_user
-  end
+  def edit; end
 
   def update
-    @user = get_user
 
     if @user.update(user_params)
       flash[:notice] = "Your profile was updated successfully"
       redirect_to @user
     else
+      flash.now[:alert] = "Your update was not successfully"
       render "edit"
     end
   end
 
   def show
-    @user = get_user
     @articles = @user.articles
   end
 
@@ -47,8 +45,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password)
   end
 
-  def get_user
-    User.find(params[:id])
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end

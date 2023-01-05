@@ -1,17 +1,16 @@
   <div class="container col-xxl-8 px-4 text-center">
       <%= image_tag "alpha.png", height: 190, width: 190, :alt => "alpha logo", :class => "d-block mx-auto mb-4" %>
-      <h1 class="display-5 fw-bold">The Alpha Blog</h1>
+      <h1 class="display-5 fw-bold"><%= @headline %></h1>
       <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Here, 
-          we provide valuable insights and resources for developers
-          of all levels. Our experienced team shares their knowledge
-          on a wide range of topics, from coding languages to 
-          software architecture. We strive to create high-quality 
-          content that is both informative and engaging.
-        </p>
+        <p class="lead mb-4"><%= @content %></p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <%= link_to "Sign Up!", sign_up_path, :class => "btn btn-primary btn-lg px-4 gap-3" %>
-          <%= link_to "Read Now", articles_path, :class => "btn btn-outline-secondary btn-lg px-4" %>
+          <% if logged_in? %>
+            <%= link_to "My Profile", user_path(current_user), :class => "btn btn-primary btn-lg px-4 gap-3" %>
+            <%= link_to "Read Now", articles_path, :class => "btn btn-outline-secondary btn-lg px-4" %>
+          <% else %>
+            <%= link_to "Log In", login_path, :class => "btn btn-primary btn-lg px-4 gap-3" %>
+            <%= link_to "Sign Up!", sign_up_path, :class => "btn btn-secondary btn-lg px-4 gap-3" %>
+          <% end %>
         </div>
       </div>
     </div>

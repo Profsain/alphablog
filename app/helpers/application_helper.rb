@@ -14,4 +14,5 @@ module ApplicationHelper
     # return an image_tag
     image_tag(gravatar_url, alt: user.username, class: "rounded m-2 d-block img-thumbnail")
   end
+
 end

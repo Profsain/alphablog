@@ -5,16 +5,9 @@
         <%= image_tag "alphaui.png", :class => "d-block mx-lg-auto img-fluid", :alt => "Alpha Blog image", width: 700, height: 500, :loading => "lazy" %>
       </div>
       <div class="col-lg-6">
-        <h1 class="display-5 fw-bold lh-1 mb-3">Welcome to Alpha Blog</h1>
-        <p class="lead">We're a team of writers, editors, and content creators 
-          who are passionate about sharing our thoughts, insights, and expertise
-          with the world. Our blog covers a wide range of topics, 
-          including personal development, business, and technology.
-        </p>
-        <p class="lead">Our goal is to provide our readers with valuable and useful 
-          information that they can apply to their own lives. We believe that knowledge 
-          is power, and we strive to empower our readers through the content we create.
-        </p>
+        <h1 class="display-5 fw-bold lh-1 mb-3"><%= @headline %></h1>
+        <p class="lead"><%= @content %></p>
+        <p class="lead"><%= @sub_content %></p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
           <%= link_to "Write for Us", new_article_path, :class => "btn btn-primary btn-lg px-4 me-md-2" %>
           <%= link_to "Read Now", articles_path, :class => "btn btn-outline-secondary btn-lg px-4" %>

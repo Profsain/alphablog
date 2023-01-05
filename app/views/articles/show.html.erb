@@ -5,7 +5,7 @@
       <p class="fst-italic text-primary">
         ....by:
         <% if @article.user %>
-          <%= link_to @article.user.username, user_path(@article.user), class: "text-decoration-none" %>
+          <%= link_to @article.user.username.titlecase, user_path(@article.user), class: "text-decoration-none" %>
         <% end %>
       </p>
       <hr>

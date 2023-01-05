@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h1 class="display-5 fw-bold lh-1 mb-3">Welcome! Please login</h1>
+  <hr>
+
+  <div class="container">
+
+  <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+  
+    <div class="mb-3">
+      <%= f.label :email %>
+      <%= f.email_field :email, :class => "form-control", placeholder: "Enter your email" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :password %>
+      <%= f.password_field :password, :class => "form-control", placeholder: "Enter your password" %>
+    </div>
+    <div class="mb-3">
+      <%= f.submit "Log in", :class => "btn btn-primary mb-3" %>
+    </div>
+  <% end %>
+   <div>
+    <%= link_to 'Cancel', articles_path, :class => "btn btn-outline-dark"%>
+  </div>
+</div>
+
+</div>
