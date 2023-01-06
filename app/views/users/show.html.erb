@@ -12,8 +12,16 @@
           <h5 class="card-title"><%= @user.username.titlecase%></h5>
           <p class="card-text">Varified Alpha blog member.</p>
           <p class="card-text"><small class="text-muted">Since: <%= time_ago_in_words(@user.created_at) %></small></p>
-          <% if logged_in? && @user == current_user %>
-            <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" %>
+          
+          <% if logged_in? %>
+            <% if @user == current_user %>
+              <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" %>
+            <% end %>
+
+            <% if current_user.admin? %>
+              <%= button_to "Delete Profile", @user, method: :delete, data:{confirm: 'Are you sure?'}, class: "btn btn-danger" %>
+              <%= link_to "Go Back", users_path, class: "btn btn-secondary" %>
+            <% end %>
           <% else %>
             <%= link_to "Go Back", users_path, class: "btn btn-secondary" %>
           <% end %>

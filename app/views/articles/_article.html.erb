@@ -12,7 +12,8 @@
           <td><%= article.title %></td>
           <td><%= truncate article.description, length: 80 %></td>
           <td><%= link_to 'Read', article_path(article), :class => "btn btn-primary" %></td>
-          <% if logged_in? && article.user == current_user %>
+          <%# check if user is logged in and if the article belongs to the user or as admin %>
+          <% if logged_in? && (article.user == current_user || current_user.admin?) %>
             <td><%= link_to 'Edit', edit_article_path(article), :class => "btn btn-secondary" %></td> 
             <td><%= button_to 'Delete', article, method: :delete, data:{confirm: 'Are you sure?'}, :class => "btn btn-danger" %></td>
           <% end %>
