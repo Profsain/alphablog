@@ -9,8 +9,16 @@
         <% end %>
       </p>
       <hr>
+      
     </div>
     <p><%= @article.description %></p>
-    <%= link_to 'Bact to articles', articles_path, :class => "btn btn-outline-dark", :type => "button" %>
+    <hr>
+    <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
+        <% if logged_in? && @article.user == current_user %>
+          <%= link_to 'Edit', edit_article_path(@article), :class => "btn btn-primary" %>
+          <%= button_to 'Delete', @article, method: :delete, data:{confirm: 'Are you sure?'}, :class => "btn btn-danger" %>
+        <% end %>
+        <%= link_to 'Bact to articles', articles_path, :class => "btn btn-outline-dark", :type => "button" %>
+      </div>
   </div>
 </div>

@@ -10,9 +10,13 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title"><%= @user.username.titlecase%></h5>
-          <p class="card-text">This is a varified Alpha blog member.</p>
+          <p class="card-text">Varified Alpha blog member.</p>
           <p class="card-text"><small class="text-muted">Since: <%= time_ago_in_words(@user.created_at) %></small></p>
-          <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" %>
+          <% if logged_in? && @user == current_user %>
+            <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "Go Back", users_path, class: "btn btn-secondary" %>
+          <% end %>
         </div>
       </div>
     </div>
