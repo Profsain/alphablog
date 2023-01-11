@@ -14,13 +14,11 @@
   </head>
 
   <body>
-    <div>
-      <%= render 'layouts/navbar' %>
-      <div class="container-fluid">
+    <%= render 'layouts/navbar' %>
+      <div class="container">
         <%= render 'layouts/notification' %>
         <%= yield %>
       </div>
-      <%= render 'layouts/footer'%>
-    </div>
+    <%= render 'layouts/footer'%>
   </body>
 </html>
